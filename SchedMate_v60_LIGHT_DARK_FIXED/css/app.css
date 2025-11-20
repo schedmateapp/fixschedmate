@@ -85,11 +85,20 @@ button {
   top: 0;
   z-index: 40;
   backdrop-filter: blur(16px);
-  background: linear-gradient(to bottom, rgba(4, 7, 20, 0.88), transparent);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--bg-main) 92%, transparent),
+    transparent
+  );
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .simple-nav {
-  background: none;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--bg-card) 94%, transparent),
+    transparent
+  );
 }
 
 .brand {
@@ -119,6 +128,15 @@ button {
   display: flex;
   gap: 18px;
   font-size: 14px;
+  color: var(--text-main);
+}
+
+.top-nav-links a {
+  color: var(--text-main);
+}
+
+.top-nav-links a:hover {
+  color: var(--accent);
 }
 
 .top-nav-actions {
@@ -139,8 +157,8 @@ Hpx;
 }
 
 .primary-btn {
-  background: linear-gradient(135deg, var(--accent), #5ea2ff);
-  border-color: rgba(102, 178, 255, 0.7);
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 70%, var(--bg-card)));
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border-subtle));
   color: #ffffff;
   box-shadow: var(--shadow-soft);
 }
@@ -155,8 +173,8 @@ Hpx;
 }
 
 .ghost-btn {
-  background: transparent;
-  border-color: rgba(151, 162, 211, 0.35);
+  background: color-mix(in srgb, var(--bg-card) 80%, transparent);
+  border-color: var(--border-subtle);
   color: var(--text-main);
 }
 
@@ -166,7 +184,7 @@ Hpx;
 }
 
 .ghost-btn:hover {
-  background: rgba(151, 162, 211, 0.1);
+  background: color-mix(in srgb, var(--bg-card) 94%, var(--bg-main) 6%);
 }
 
 .full-width {
@@ -204,6 +222,7 @@ Hpx;
 .hero-text h1 {
   font-size: clamp(32px, 4vw, 40px);
   margin: 18px 0;
+  color: var(--text-main);
 }
 
 .hero-subtitle {
@@ -312,10 +331,14 @@ Hpx;
 }
 
 .pricing-card {
-  background: radial-gradient(circle at top left, #1a2652, var(--bg-elevated));
+  background: radial-gradient(
+    circle at top left,
+    color-mix(in srgb, var(--accent) 28%, var(--bg-card)),
+    var(--bg-elevated)
+  );
   border-radius: 18px;
   padding: 20px 20px 24px;
-  border: 1px solid rgba(95, 151, 255, 0.4);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border-subtle));
   max-width: 320px;
 }
 
@@ -335,6 +358,13 @@ Hpx;
   margin: 12px 0 18px;
   color: var(--text-muted);
   font-size: 14px;
+}
+
+.pricing-card h3,
+.pricing-card .pricing-price,
+.pricing-card,
+.pricing-card .pricing-features li {
+  color: var(--text-main);
 }
 
 /* Footer */
@@ -749,81 +779,53 @@ Hpx;
 }
 
 
-/* Improve pill contrast in light mo
-/* Pill color contrast for theme toggle */
 [data-theme="light"] .pill {
-  background: rgba(37, 99, 235, 0.12);
-  color: #1d4ed8;
+  background: color-mix(in srgb, var(--accent) 20%, transparent) !important;
+  color: var(--accent) !important;
 }
 
 [data-theme="dark"] .pill {
-  background: rgba(37, 99, 235, 0.35);
-  color: #c9ddff;
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+  color: color-mix(in srgb, var(--accent) 80%, var(--bg-card));
 }
 
-
-/* Pill visibility fix */
-[data-theme="light"] .pill {
-  background: rgba(37,99,235,0.15);
-  color: #1d4ed8 !important;
-}
-
-
-/* Pill visibility fix v44 regenerated */
-[data-theme="light"] .pill {
-  background: rgba(37,99,235,0.15) !important;
-  color: #1d4ed8 !important;
-}
-
-
-/* === Light mode refinements for home/auth (v60 fix) === */
-
-/* Softer top nav in light mode so it doesn't look like a dark bar */
 html[data-theme="light"] .top-nav {
-  background: color-mix(in srgb, var(--bg-main) 96%, transparent);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--bg-card) 95%, transparent),
+    transparent
+  );
   border-bottom: 1px solid var(--border-subtle);
   box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
 }
 
-/* Auth nav bar also use soft light background */
 html[data-theme="light"] .top-nav.simple-nav {
-  background: color-mix(in srgb, var(--bg-main) 98%, #ffffff 2%);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--bg-card) 95%, transparent),
+    transparent
+  );
 }
 
-/* Pricing card background was too dark in light mode; use soft light panel */
 html[data-theme="light"] .pricing-card {
-  background: radial-gradient(circle at top left, #e0ebff, #ffffff);
-  border-color: rgba(148, 163, 255, 0.65);
+  background: radial-gradient(
+    circle at top left,
+    color-mix(in srgb, var(--accent) 22%, var(--bg-card)),
+    var(--bg-card)
+  );
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border-subtle));
 }
 
-/* Make sure pricing text has strong contrast in light mode */
-html[data-theme="light"] .pricing-card,
-html[data-theme="light"] .pricing-card h3,
-html[data-theme="light"] .pricing-card .pricing-price,
-html[data-theme="light"] .pricing-card .pricing-price span,
-html[data-theme="light"] .pricing-card .pricing-features,
-html[data-theme="light"] .pricing-card .pricing-features li {
-  color: var(--text-main);
-}
-
-/* Hero subtitle + small text use the muted color variable for good contrast */
 html[data-theme="light"] .hero-subtitle,
 html[data-theme="light"] .small-text {
   color: var(--text-muted);
 }
 
-/* Slightly lighter tutorial banner in light mode */
 html[data-theme="light"] .tutorial-banner {
   background: linear-gradient(
     120deg,
-    rgba(76, 175, 80, 0.08),
+    color-mix(in srgb, var(--accent) 18%, transparent),
     var(--bg-elevated)
   );
-}
-
-/* Ensure buttons keep enough contrast on very light backgrounds */
-html[data-theme="light"] .ghost-btn {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: var(--border-subtle);
 }
 

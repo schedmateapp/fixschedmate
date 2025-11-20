@@ -82,9 +82,14 @@ html[data-theme="light"] .sidebar {
   transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
 }
 
+.sidebar-link:hover {
+  background: var(--accent-soft);
+  color: var(--text-main);
+}
+
 .sidebar-link.active {
-  background: rgba(37,99,235,0.18);
-  color: #e5edff;
+  background: var(--accent-soft);
+  color: var(--text-main);
 }
 
 .sidebar-footer {
@@ -295,22 +300,12 @@ dialog.modal[open] {
 .modal-inner input,
 .modal-inner select,
 .modal-inner textarea {
-  background: #ffffff;
-  color: #0F172A;
+  background: var(--bg-elevated-alt);
+  color: var(--text-main);
   border-radius: 8px;
   border: 1px solid var(--border-subtle);
   padding: 0.5rem 0.6rem;
   font-size: 0.85rem;
-}
-
-html[data-theme="dark"] .modal-card input,
-html[data-theme="dark"] .modal-card select,
-html[data-theme="dark"] .modal-card textarea,
-html[data-theme="dark"] .modal-inner input,
-html[data-theme="dark"] .modal-inner select,
-html[data-theme="dark"] .modal-inner textarea {
-  background: #E5E9F0;
-  color: #020617;
 }
 
 /* Responsive tweak: full width on small screens */
